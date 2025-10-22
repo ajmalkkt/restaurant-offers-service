@@ -213,14 +213,16 @@ MIT License — see LICENSE file.
 
 Maintainer: @ajmalkkt
 
-## What I need from you (placeholders to fill)
+## First time check-in commands - For my reference
+echo "# restaurant-offers-service" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ajmalkkt/restaurant-offers-service.git
+git push -u origin main
 
-To finalize and make the README canonical, please provide:
-- Actual runtime and language (e.g., Node 18, Go 1.21)
-- Actual web framework (Express, Fastify, NestJS, Spring Boot, etc.)
-- Exact install/start/test/migrate commands
-- The real database/migration tool (Prisma, TypeORM, Sequelize, Flyway, etc.)
-- License choice (MIT, Apache-2.0, etc.)
-- Any additional environment variables used by the service
-
-Once you provide those details I will update the README to be precise and ready to commit.
+or push an existing repository from the command line
+git remote add origin https://github.com/ajmalkkt/restaurant-offers-service.git
+git branch -M main
+git push -u origin main
