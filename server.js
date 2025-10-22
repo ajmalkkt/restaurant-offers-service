@@ -13,6 +13,7 @@ const allowedOrigins = [
   "https://dine-deals-dot-browseqatar.el.r.appspot.com", // React frontend on App Engine
   "http://localhost:3000" // Optional: for local development
 ];
+//app.use(cors({ origin: "*" }));  // For testing purposes only
 app.use(cors({
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl)
@@ -25,7 +26,14 @@ app.use(cors({
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-api-token",
+      "X-Requested-With",
+      "Accept"
+    ],
+    optionsSuccessStatus: 204,
   }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
