@@ -181,11 +181,11 @@ volumes:
 ##First time check-in 
 echo "# restaurant-offers-service" >> README.md
 git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/ajmalkkt/restaurant-offers-service.git
-git push -u origin main
+git add README.md 
+git commit -m "first commit" 
+git branch -M main 
+git remote add origin https://github.com/ajmalkkt/restaurant-offers-service.git 
+git push -u origin main 
 
 or push an existing repository from the command line
 git remote add origin https://github.com/ajmalkkt/restaurant-offers-service.git
