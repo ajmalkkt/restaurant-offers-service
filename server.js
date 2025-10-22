@@ -7,9 +7,31 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+
+// Allow only your frontend origin
+const allowedOrigins = [
+  "https://dine-deals-dot-browseqatar.el.r.appspot.com", // React frontend on App Engine
+  "http://localhost:3000" // Optional: for local development
+];
+app.use(cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `CORS policy: Access from origin ${origin} not allowed`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+
+// Handle preflight requests for all routes
+app.options("*", cors());
 
 import restaurantRoutes from "./routes/restaurantRoutes.js";
 import offerRoutes from "./routes/offerRoutes.js";
